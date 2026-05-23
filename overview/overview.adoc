@@ -1,35 +1,41 @@
-#
 # 1. Our Vision on Cyber-Physical BDI Agents (CP-BDI)
 
 ## Overview
 
-- BDI agents composed of software + hardware unified in a single entity.
+#### BDI agents composed of software + hardware unified in a single entity.
+
 - Perception includes values read from sensors.
 - The actions repertoire includes actions enabled by physical actuators.
-- The agent does not control the hardware. It *is* the hardware.ss
-
-<img src="jason-ros-agent-russel-norvig.drawio-5.png" alt="Alt Text" width="200" height="100">
+- The hardware is not an external device to be used by the agent. The hardware  __is part__ of the agent.
 
 
-### Example: Autonomous Vehicle
 
-- The agent does not drive the car.
+#### Example: Autonomous Vehicle
+
+The agent does not drive the car.
+
 - It does not merely activate motors or read distance sensors.
-- The agent itself is the car.
+
+The agent itself is the car.
+
 - Moving forward is an agent action.
 - Obstacle distance is part of the agent’s perception.
 
----
+
+
+
+
 
 ## Architecture Overview
+Sources of the agents' perceptions include physical devices, which may also execute the agents' actions. These devices include:
 
 - ROS Topics
 - ROS Services
 - Serial-controlled sensors (Arduino, ESP32, etc.)
-- Serial-controlled actuators
 - Other sensors and actuators
 
-> Image adapted from Russell and Norvig (1995)
+.Image adapted from Russell and Norvig (1995)
+image::jason-ros-agent-russel-norvig.drawio-5.png-1.png[width=50%]
 
 ---
 
@@ -37,35 +43,32 @@
 
 ### Passive Perception
 
-- The agent does not actively request sensor readings.
+- Perceptions are acquired when sensor values are available. The agent does not actively request sensor readings.
 
 ### Physical Actions as Internal Actions
 
-- Physical actions are part of the agent implementation.
-- There is a decoupling between action and actuation.
-- One action may require multiple low-level actuations.
-- Some aspects require special attention:
-  - reasoning cycle blocking
-  - synchronization
-  - execution timing
+* Physical actions are part of the agent implementation.
+* There is a decoupling between action and actuation.
+* One action may require multiple low-level actuations.
+* Some aspects require special attention:
+  ** reasoning cycle blocking
+  ** synchronization
+  ** execution timing
 
 ---
 
 ## Design Principle 1 — Decouple Behaviour and Functioning
 
-### Functioning
-
-What the hardware can do:
+#### Functioning: what the hardware can do. 
+Exammple: a ground vehicle can:
 
 - move forward
 - turn left
 - turn right
 
-### Behaviour
+#### Behaviour: what the agent program does:
 
-What the agent program does:
-
-- when an obstacle is detected, turn left
+Example: an agent controlling a ground vehiche should turn left when perceives an obstacle.
 
 ### Key Idea
 
@@ -77,10 +80,12 @@ What the agent program does:
 
 ## Design Principle 2 — Exploit JaCaMo as Much as Possible
 
-- Agents run on PCs or single-board computers.
-- Devices are connected through:
-  - serial communication
-  - ROS
+* Agents run on PCs or single-board computers.
+* Devices are connected through:
+
+  ** serial communication
+  ** ROS
+  ** other means
 
 ---
 
@@ -88,11 +93,11 @@ What the agent program does:
 
 ## Physical Portion
 
-- Sensors and actuators connected to microcontrollers.
-- Controlled by software such as:
+Sensors and actuators connected to devices controlled by software such as:
+
   - ROS
   - Arduino C/C++
-  - Embedded systems
+  - Other hardware controlling software
 
 ---
 
