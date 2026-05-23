@@ -8,7 +8,7 @@
 - The actions repertoire includes actions enabled by physical actuators.
 - The agent does not control the hardware. It *is* the hardware.ss
 
-<img src="jason-ros-agent-russel-norvig.drawio-5.png" alt="Alt Text" width="200" height="100">
+image::jason-ros-agent-russel-norvig.drawio-5.png-1.png[]
 
 
 ### Example: Autonomous Vehicle
