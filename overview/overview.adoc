@@ -328,7 +328,7 @@ Provides:
 - serialize outgoing data
 
 ---
-
+////
 ## High-Level Interface Examples
 
 ### Serial Device
@@ -581,7 +581,7 @@ Links:
 - https://www.nist.gov/el/intelligent-systems-division-73500/agile-robotics-industrial-automation-competition
 
 ---
-
+////
 # References
 
 - Stuart Russell and Peter Norvig. *Artificial Intelligence: A Modern Approach*. Prentice Hall, 1995.
