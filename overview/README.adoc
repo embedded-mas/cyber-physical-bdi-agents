@@ -35,7 +35,7 @@ Sources of the agents' perceptions include physical devices, which may also exec
 - Other sensors and actuators
 
 .Image adapted from Russell and Norvig (1995)
-image::jason-ros-agent-russel-norvig.drawio-5.png-1.png[width=50%]
+image::figs/jason-ros-agent-russel-norvig.drawio-5.png-1.png[width=50%]
 
 ---
 
@@ -92,7 +92,7 @@ For example, an agent controlling a ground vehiche should turn left when perceiv
 # 2. Components
 
 .Components of CP-BDI agents
-image::embedded_mas_overall_arhiteture.png[width=50%]
+image::figs/embedded_mas_overall_arhiteture.png[width=50%]
 
 ## Physical Portion
 
@@ -103,7 +103,7 @@ Sensors and actuators connected to devices controlled by software such as:
   - Other hardware controlling software
 
 .Physical portion
-image::embedded_mas_overall_arhiteture-microcontroller.png[width=50%]
+image::figs/embedded_mas_overall_arhiteture-microcontroller.png[width=50%]
 
 ---
 
@@ -112,7 +112,7 @@ image::embedded_mas_overall_arhiteture-microcontroller.png[width=50%]
 Agents are written as standard Jason agents without extending the language.
 
 .Agent code
-image::embedded_mas_overall_arhiteture-asl_code.png[width=50%]
+image::figs/embedded_mas_overall_arhiteture-asl_code.png[width=50%]
 
 ### Example
 
@@ -177,7 +177,7 @@ Features:
 - actuation occurs through internal actions
 
 .Agent execution
-image::embedded_mas_overall_arhiteture-agent_reasoning.png[width=50%]
+image::figs/embedded_mas_overall_arhiteture-agent_reasoning.png[width=50%]
 
 ### MAS Example
 
@@ -200,7 +200,7 @@ Connection between the agent execution system and the physical portion of the sy
 - Customized perception and action handling
 
 .Physical device interface
-image::embedded_mas_overall_arhiteture-device.png[width=50%]
+image::figs/embedded_mas_overall_arhiteture-device.png[width=50%]
 
 ---
 
@@ -297,7 +297,7 @@ Provide access of the upper layers to the physical portion of the system. Divide
 - General Purpose Physical Interface
 
 .Physical interfaces
-image::embedded_mas_overall_arhiteture-physical.png[width=50%]
+image::figs/embedded_mas_overall_arhiteture-physical.png[width=50%]
 
 #### High-Level Physical Interface
 
