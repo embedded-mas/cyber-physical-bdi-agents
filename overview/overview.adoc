@@ -60,15 +60,15 @@ image::jason-ros-agent-russel-norvig.drawio-5.png-1.png[width=50%]
 ## Design Principle 1 — Decouple Behaviour and Functioning
 
 #### Functioning: what the hardware can do. 
-Exammple: a ground vehicle can:
+For example, a ground vehicle can:
 
 - move forward
 - turn left
 - turn right
 
-#### Behaviour: what the agent program does:
+#### Behaviour: what the agent program does.
 
-Example: an agent controlling a ground vehiche should turn left when perceives an obstacle.
+For example, an agent controlling a ground vehiche should turn left when perceives an obstacle.
 
 ### Key Idea
 
@@ -91,6 +91,9 @@ Example: an agent controlling a ground vehiche should turn left when perceives a
 
 # 2. Components
 
+.Components of CP-BDI agents
+image::embedded_mas_overall_arhiteture.png[width=50%]
+
 ## Physical Portion
 
 Sensors and actuators connected to devices controlled by software such as:
@@ -99,11 +102,17 @@ Sensors and actuators connected to devices controlled by software such as:
   - Arduino C/C++
   - Other hardware controlling software
 
+.Physical portion
+image::embedded_mas_overall_arhiteture-microcontroller.png[width=50%]
+
 ---
 
 ## Agent Source Code
 
 Agents are written as standard Jason agents without extending the language.
+
+.Agent code
+image::embedded_mas_overall_arhiteture-asl_code.png[width=50%]
 
 ### Example
 
@@ -167,6 +176,9 @@ Features:
 - perception process includes sensor reading
 - actuation occurs through internal actions
 
+.Agent execution
+image::embedded_mas_overall_arhiteture-agent_reasoning.png[width=50%]
+
 ### MAS Example
 
 ```yaml
@@ -181,17 +193,20 @@ mas:
 
 ## Physical Device Interface
 
-Responsibilities:
+Connection between the agent execution system and the physical portion of the system
 
-- transform sensor values into perceptions
-- transform internal actions into actuations
-- customize perception and action handling
+- Perception management: transform sensor values into perceptions
+- Action management: transform internal actions into actuations
+- Customized perception and action handling
+
+.Physical device interface
+image::embedded_mas_overall_arhiteture-device.png[width=50%]
 
 ---
 
-## Perception Management
+### Perception Management
 
-### Example 1 — Serial Device
+#### Example 1 — Serial Device
 
 ```yaml
 device_id: demo_serial_device
@@ -202,7 +217,6 @@ serialActions:
     actuationName: light_on
 ```
 
-Characteristics:
 
 - transforms JSON data into perceptions
 - buffers serial inputs
@@ -210,7 +224,7 @@ Characteristics:
 
 ---
 
-### Example 2 — ROS Device
+#### Example 2 — ROS Device
 
 ```yaml
 device_id: demo_ros_device
@@ -230,16 +244,16 @@ actions:
         - angular
 ```
 
-Characteristics:
-
 - transforms ROS literals into perceptions
 - collects values from ROS topics
 
 ---
 
-## Action Management
+### Action Management
 
-### Serial Device Example
+#### Example 1: Serial device
+
+Transform agents' actions into serial writings
 
 Jason action:
 
@@ -255,7 +269,9 @@ light_on(10)
 
 ---
 
-### ROS Example
+#### Example 1: ROS
+
+Transforms agents' actions into topic writings and service requests
 
 Jason action:
 
@@ -273,7 +289,25 @@ ROS service representation:
 
 ---
 
-# 3. General Purpose Physical Interface
+## Physical interfaces
+
+Provide access of the upper layers to the physical portion of the system. Divided in two parts:
+
+- High-Level Physical Interface 
+- General Purpose Physical Interface
+
+.Physical interfaces
+image::embedded_mas_overall_arhiteture-physical.png[width=50%]
+
+#### High-Level Physical Interface
+
+Responsibilities:
+
+- handling communication protocols
+- encapsulating transport details
+
+
+#### General Purpose Physical Interface
 
 Provides:
 
@@ -283,18 +317,12 @@ Provides:
 
 ---
 
-# 4. High-Level Physical Interface
 
-Responsibilities:
-
-- handling communication protocols
-- encapsulating transport details
-
-## Read Operations
+##### Read functions
 
 - extract payload from physical communication
 
-## Write Operations
+##### Write functions
 
 - add protocol metadata
 - serialize outgoing data
